@@ -1,0 +1,14 @@
+/*
+ * @Author: wdy 
+ * @Date: 2019-05-05 13:58:10 
+ * @Last Modified by: wdy
+ * @Last Modified time: 2019-05-19 16:51:28
+ */
+@layout-header-height: 80px;
+@layout-footer-height: 90px;
+@layout-breadcrumb-height: 30px;
+
+@layout-contentHasFooter-height: calc(
+  100vh - @layout-header-height - @layout-footer-height - @layout-breadcrumb-height
+);
+@layout-contentNoFooter-height: calc(100vh - @layout-header-height - @layout-breadcrumb-height);
