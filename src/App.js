@@ -1,9 +1,4 @@
-/*
- * @Author: wdy
- * @Date: 2019-04-17 15:56:31
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2019-06-06 11:10:34
- */
+
 import 'antd/dist/antd.css';
 import React from 'react';
 import { Provider } from 'react-redux';

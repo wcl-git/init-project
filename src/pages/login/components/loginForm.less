@@ -1,0 +1,61 @@
+@import "~style/config.less";
+@import "~style/mixin.less";
+.from-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 610px;
+  height: 470px;
+  transform: translate(80px);
+  background-image: url("~assets/images/login/loginForm-bg.png");
+  .title-container {
+    align-self: center;
+    width: 460px;
+    height: 90px;
+    transform: translateX(-60px);
+
+    .flex-center();
+    .titleImg {
+      width: 40px;
+      height: 40px;
+    }
+    .titleText {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 24px;
+      margin-bottom: 0;
+      padding-left: 10px;
+      color: @theme-color;
+      -webkit-box-reflect: below 5px linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, 0.3));
+    }
+  }
+  .form-content {
+    width: 340px;
+    transform: translate(80px, -100px);
+    .formItem-label {
+      font-size: 16px;
+      line-height: 40px;
+      color: @theme-color;
+    }
+    .formItem-input {
+      font-size: 16px;
+      line-height: 40px;
+      color: #fff;
+      border: none;
+      border-bottom: 1px solid @theme-color;
+      border-radius: 0;
+      outline: none;
+      background-color: transparent !important;
+      &:focus {
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+    .formItem-content {
+      display: flex;
+      .login-btn {
+        flex: 1;
+      }
+    }
+  }
+}
