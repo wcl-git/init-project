@@ -1,11 +1,8 @@
-/*
- * @Author: wdy
- * @Date: 2019-04-20 19:07:37
- * @Last Modified by: wdy
- * @Last Modified time: 2019-04-20 19:13:45
- */
-export const auth = {
-  code: '200',
+/**
+ * json-server npm包不支持 es6 的 import 和 export  export default, 文件
+*/
+module.exports = {
+  code: '2000',
   message: '成功',
   data: {
     menuList: [

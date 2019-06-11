@@ -2,8 +2,11 @@
  *  作者： wcl
 */
 import axios from 'axios';
-import { notification, message } from 'antd';
+// import { notification, message } from 'antd';
+import { message } from 'antd';
 import { getEnv, getCookie } from './tools';
+
+import 'mock/index';
 
 // 返回数据状态信息
 const shuiheCodeMessage = {
@@ -80,18 +83,22 @@ const checkStatus = (response) => {
 * url 请求路径
 * data 请求的参数
 * newOptions 请求type
+* isMock 是否启用mock,当传如这个参数时候就获取mock数据
 */
-const shepAjax = (url, data, newOptions) => {
+const shepAjax = (url, data, newOptions, isMock = false) => {
   const defaultOptions = { method: 'POST', withCredentials: true };
   const accessToken = getCookie('xnToken'); // 这里是预留登陆信息
   console.log(accessToken);
-  // 这里配置不同环境的前缀
+  // 配置不同环境的前缀
   const objPrefix = {
     development: 'http://10.100.2.30:31009/api',
     production: `${window.location.origin}/api`,
   };
-  const prefix = objPrefix[`${getEnv()}`];
-  url = `${prefix}${url}`;
+  const prefix = objPrefix[`${getEnv()}`]; // 如果需要改变请求前缀。只需修改  prefix
+  const mockSign = !!((process.env.NODE_ENV === 'development' && isMock)); //  增加mock配置, 同时屏蔽生产环境
+  const mockprefix = 'http://localhost:3000'; // mock 时的地址，端口号可以根据package.json里的配置改变
+
+  url = mockSign ? `${mockprefix}${url}` : `${prefix}${url}`;
 
   // get请求拼接参数到url上
   if (newOptions && newOptions.method === 'GET') {
@@ -127,18 +134,19 @@ const shepAjax = (url, data, newOptions) => {
       return checkStatus(response);
     })
     .catch((error) => {
-      try {
-        notification.error({
-          message: '错误提示',
-          description: error.message,
-          style: {
-            width: 800,
-            marginLeft: '25%',
-          },
-        });
-      } catch (e) {
-        console.log(e);
-      }
+      console.log(error.massage);
+      // try {
+      //   notification.error({
+      //     message: '错误提示',
+      //     description: error.message,
+      //     style: {
+      //       width: 800,
+      //       marginLeft: '25%',
+      //     },
+      //   });
+      // } catch (e) {
+      //   console.log(e);
+      // }
     });
 };
 

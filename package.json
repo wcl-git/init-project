@@ -74,11 +74,12 @@
     "workbox-webpack-plugin": "4.2.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "node scripts/start.js & json-server src/mock/index.js --port 3000",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint . --ext '.js,.jsx' --fix",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "mock": "json-server src/mock/index.js --port 3000"
   },
   "browserslist": {
     "production": [
@@ -141,7 +142,9 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-babel": "^5.3.0",
     "husky": "^2.3.0",
-    "lint-staged": "^8.1.7"
+    "json-server": "^0.15.0",
+    "lint-staged": "^8.1.7",
+    "mockjs": "^1.0.1-beta3"
   },
   "husky": {
     "hooks": {
