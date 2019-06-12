@@ -2,7 +2,7 @@
  * @Author: wdy
  * @Date: 2019-04-19 13:57:46
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2019-06-06 11:30:32
+ * @Last Modified time: 2019-06-12 09:27:49
  */
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
@@ -39,6 +39,7 @@ class Routers extends Component {
           <Route path="/" exact render={() => <Redirect to="/login" />} />
           <Route path="/login" component={Login} />
           <Route path="/Root" component={Root} />
+          <Redirect to="/" />
         </Switch>
       </Router>
     );
